@@ -7,13 +7,13 @@ import 'components/list_user_component.dart';
 import 'components/show_message_error_component.dart';
 
 class UserView extends StatelessWidget {
-  static const route = "/";
+  static const route = "/user";
 
   const UserView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final UserController userController = Get.put(UserController());
+    final userController = Get.find<UserController>();
     userController.fetchUsers();
 
     final appBarSliver = SliverAppBar(
@@ -59,6 +59,7 @@ class UserView extends StatelessWidget {
 
           if (userResponse is Error) {
             return ShowMessageErrorComponent(
+                message: userResponse.message,
                 onClick: userController.fetchUsers);
           }
           return Container();

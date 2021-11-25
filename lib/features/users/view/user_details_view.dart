@@ -28,9 +28,15 @@ class UserDetailsView extends StatelessWidget {
         if (response is Loading) {
           return _buildLoading();
         }
-        return ShowMessageErrorComponent(onClick: () {
-          userController.getUserById(userController.getParams());
-        });
+
+        if (response is Error) {
+          return ShowMessageErrorComponent(
+              message: response.message,
+              onClick: () {
+                userController.getUserById(userController.getParams());
+              });
+        }
+        return Container();
       }),
     );
   }

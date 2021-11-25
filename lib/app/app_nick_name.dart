@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scaffold_flutter/features/login/view/login_view.dart';
+import 'package:scaffold_flutter/features/users/user_binding.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
 import 'package:scaffold_flutter/features/users/view/users_view.dart';
 
@@ -10,10 +12,19 @@ class AppNickName extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.fadeIn,
       title: 'Flutter Demo',
       initialRoute: UserView.route,
+      // initialBinding: UserBinding(),
       getPages: [
-        GetPage(name: UserView.route, page: () => const UserView()),
+        GetPage(
+          name: LoginView.route,
+          page: () => const LoginView(),
+        ),
+        GetPage(
+            name: UserView.route,
+            page: () => const UserView(),
+            binding: UserBinding()),
         GetPage(
           name: UserDetailsView.route,
           page: () => const UserDetailsView(),
@@ -22,7 +33,6 @@ class AppNickName extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const UserView(),
     );
   }
 }
