@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:scaffold_flutter/data/models/response/exception_response.dart';
 import 'package:scaffold_flutter/data/provider/http_client_interface.dart';
 
 class DioClient implements IRestClient {
@@ -8,7 +9,6 @@ class DioClient implements IRestClient {
   late Dio dio;
 
   DioClient.withAuthentication() {
-
     const token = "ZFDDXXGCHGCHGXC";
 
     dio = Dio(options);
@@ -16,7 +16,7 @@ class DioClient implements IRestClient {
       InterceptorsWrapper(
         onRequest: (options, handler) {
           options.headers['Authorization'] = 'Barier $token';
-          
+
           return handler.next(options);
         },
       ),
@@ -31,9 +31,31 @@ class DioClient implements IRestClient {
   @override
   Future<Map<String, dynamic>> get(String url,
       {Map<String, dynamic>? queries}) async {
-    final response = await dio.get(url, queryParameters: queries);
-    log('REQUEST DIO');
-    return response.data;
+    try {
+      final response = await dio.get(url, queryParameters: queries);
+      log('REQUEST DIO');
+      return response.data;
+    } on DioError catch (e) {
+      switch (e.type) {
+        case DioErrorType.connectTimeout:
+          throw ExceptionResponse(statusCode: 408, message: e.message);
+        case DioErrorType.receiveTimeout:
+          ExceptionResponse(statusCode: 408, message: e.message);
+          break;
+        case DioErrorType.sendTimeout:
+          ExceptionResponse(statusCode: 408, message: e.message);
+          break;
+        case DioErrorType.response:
+          ExceptionResponse(
+              statusCode: e.response?.statusCode ?? 500, message: e.message);
+          break;
+        default:
+          throw ExceptionResponse(
+              statusCode: 500, message: 'Não foi possivel realizar requisição');
+      }
+      throw ExceptionResponse(
+          statusCode: 500, message: 'Não foi possivel realizar requisição');
+    }
   }
 
   @override

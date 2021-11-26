@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/data/models/forms/credential_form.dart';
+import 'package:scaffold_flutter/data/models/response/exception_response.dart';
 import 'package:scaffold_flutter/data/repository/login_repository_interface.dart';
 import 'package:scaffold_flutter/features/users/view/users_view.dart';
 

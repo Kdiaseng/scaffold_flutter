@@ -19,9 +19,8 @@ class UserRepository implements IUserRepository {
       var response = await restClient
           .get('$baseUrl/users', queries: {'page': page.toString()});
       return UserPagedResponse.fromJson(response);
-    } on DioError catch (e) {
-      throw ExceptionResponse(
-          statusCode: e.response?.statusCode ?? 0, message: e.message);
+    } on ExceptionResponse catch (e) {
+      throw ExceptionResponse(statusCode: e.statusCode, message: e.message);
     }
   }
 
@@ -30,9 +29,8 @@ class UserRepository implements IUserRepository {
     try {
       var response = await restClient.get('$baseUrl/users/$userId');
       return UserWithSupport.fromJson(response);
-    } on DioError catch (e) {
-      throw ExceptionResponse(
-          statusCode: e.response?.statusCode ?? 0, message: e.message);
+    } on ExceptionResponse catch (e) {
+      throw ExceptionResponse(statusCode: e.statusCode, message: e.message);
     }
   }
 }
