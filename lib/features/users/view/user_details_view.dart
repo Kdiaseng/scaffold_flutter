@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scaffold_flutter/data/response/response_custom.dart';
+import 'package:scaffold_flutter/data/models/response/response_custom.dart';
 import 'package:scaffold_flutter/features/users/controller/user_controller.dart';
 import 'package:scaffold_flutter/features/users/model/user_details_model.dart';
 import 'package:scaffold_flutter/features/users/view/components/show_message_error_component.dart';

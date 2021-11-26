@@ -1,4 +1,4 @@
-import 'package:scaffold_flutter/data/response/user_paged_response.dart';
+import 'package:scaffold_flutter/data/models/response/user_paged_response.dart';
 import 'package:scaffold_flutter/features/users/model/user_details_model.dart';
 import 'package:scaffold_flutter/features/users/model/user_model.dart';
 

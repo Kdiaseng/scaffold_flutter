@@ -1,9 +1,8 @@
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/data/mapper/user_response_mapper.dart';
-
+import 'package:scaffold_flutter/data/models/response/exception_response.dart';
+import 'package:scaffold_flutter/data/models/response/response_custom.dart';
 import 'package:scaffold_flutter/data/repository/user_repository_interface.dart';
-import 'package:scaffold_flutter/data/response/exception_response.dart';
-import 'package:scaffold_flutter/data/response/response_custom.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
 
 class UserController extends GetxController {

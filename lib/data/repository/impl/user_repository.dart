@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:scaffold_flutter/data/models/response/exception_response.dart';
+import 'package:scaffold_flutter/data/models/response/user_paged_response.dart';
 import 'package:scaffold_flutter/data/provider/http_client_interface.dart';
-import 'package:scaffold_flutter/data/response/exception_response.dart';
-import 'package:scaffold_flutter/data/response/user_paged_response.dart';
 import 'package:scaffold_flutter/utils/constants.dart';
 import '../user_repository_interface.dart';
 

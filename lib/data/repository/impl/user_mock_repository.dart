@@ -1,5 +1,5 @@
+import 'package:scaffold_flutter/data/models/response/user_paged_response.dart';
 import 'package:scaffold_flutter/data/repository/user_repository_interface.dart';
-import 'package:scaffold_flutter/data/response/user_paged_response.dart';
 
 const data = {
   "page": 2,
