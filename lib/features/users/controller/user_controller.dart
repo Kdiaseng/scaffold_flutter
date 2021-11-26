@@ -35,7 +35,7 @@ class UserController extends GetxController {
   fetchUsers() async {
     _usersResponse(ResponseCustom.loading());
     try {
-      final response = await userRepository.getAllUsers(1);
+      final response = await userRepository.getAllUsers(2);
       _usersResponse(
           ResponseCustom.success(response.userResponse.asCategoryModelList()));
     } on ExceptionResponse catch (e) {
