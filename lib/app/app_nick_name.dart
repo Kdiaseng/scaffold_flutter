@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scaffold_flutter/features/login/view/login_binding.dart';
 import 'package:scaffold_flutter/features/login/view/login_view.dart';
 import 'package:scaffold_flutter/features/users/user_binding.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
@@ -14,13 +15,13 @@ class AppNickName extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fadeIn,
       title: 'Flutter Demo',
-      initialRoute: UserView.route,
+      initialRoute: LoginView.route,
       // initialBinding: UserBinding(),
       getPages: [
         GetPage(
-          name: LoginView.route,
-          page: () => const LoginView(),
-        ),
+            name: LoginView.route,
+            page: () => const LoginView(),
+            binding: LoginBiding()),
         GetPage(
             name: UserView.route,
             page: () => const UserView(),

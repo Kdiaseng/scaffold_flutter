@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:scaffold_flutter/data/models/forms/credential_form.dart';
 import 'package:scaffold_flutter/data/provider/http_client_interface.dart';
 import 'package:scaffold_flutter/data/repository/login_repository_interface.dart';
@@ -10,6 +12,7 @@ class LoginRepository implements ILoginRepository {
 
   @override
   Future<Map<String, dynamic>> login(CredentialForm credentials) async {
+    log(credentials.toJson().toString());
     final response =
         await _restClient.post('$baseUrl/login', credentials.toJson());
     return response;
