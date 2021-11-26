@@ -12,8 +12,8 @@ class UserBinding implements Bindings {
   void dependencies() {
      // Get.lazyPut<UserController>(() => UserController(UserMockRepository()));
 
-    // Get.lazyPut<IRestClient>(() => HttpClient());
-    Get.lazyPut<IRestClient>(() => DioClient());
+    Get.lazyPut<IRestClient>(() => HttpClient());
+    // Get.lazyPut<IRestClient>(() => DioClient());
     Get.lazyPut<IUserRepository>(() => UserRepository(Get.find()));
     Get.lazyPut<UserController>(() => UserController(Get.find()));
   }

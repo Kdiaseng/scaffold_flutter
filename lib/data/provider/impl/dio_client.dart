@@ -4,7 +4,12 @@ import 'package:dio/dio.dart';
 import 'package:scaffold_flutter/data/provider/http_client_interface.dart';
 
 class DioClient implements IRestClient {
-  final dio = Dio();
+  final options = BaseOptions(connectTimeout: 5000, receiveTimeout: 3000);
+  late Dio dio;
+  
+  DioClient() {
+    dio = Dio(options);
+  }
 
   @override
   Future<Map<String, dynamic>> get(String url,

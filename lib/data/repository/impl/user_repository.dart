@@ -13,6 +13,9 @@ class UserRepository implements IUserRepository {
   @override
   Future<UserPagedResponse> getAllUsers(int page) async {
     try {
+                      /*Test timeout*/
+      // var response = await restClient
+      //     .get('$baseUrl/users', queries: {'delay': 8.toString()});
       var response = await restClient
           .get('$baseUrl/users', queries: {'page': page.toString()});
       return UserPagedResponse.fromJson(response);
