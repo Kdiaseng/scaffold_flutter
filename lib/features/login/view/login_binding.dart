@@ -8,7 +8,7 @@ import 'package:scaffold_flutter/features/login/controller/login_controller.dart
 class LoginBiding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<IRestClient>(() => DioClient());
+    Get.lazyPut<IRestClient>(() => DioClient.withAuthentication());
     Get.lazyPut<ILoginRepository>(() => LoginRepository(Get.find()));
     Get.lazyPut(() => LoginController(Get.find()));
   }

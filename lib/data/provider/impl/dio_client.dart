@@ -7,6 +7,23 @@ class DioClient implements IRestClient {
   final options = BaseOptions(connectTimeout: 5000, receiveTimeout: 3000);
   late Dio dio;
 
+  DioClient.withAuthentication() {
+
+    const token = "ZFDDXXGCHGCHGXC";
+
+    dio = Dio(options);
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          options.headers['Authorization'] = 'Barier $token';
+          
+          return handler.next(options);
+        },
+      ),
+    );
+    dio.interceptors.add(LogInterceptor(responseBody: false));
+  }
+
   DioClient() {
     dio = Dio(options);
   }

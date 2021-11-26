@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/data/models/forms/credential_form.dart';
 import 'package:scaffold_flutter/data/repository/login_repository_interface.dart';
+import 'package:scaffold_flutter/features/users/view/users_view.dart';
 
 class LoginController extends GetxController {
   LoginController(this._loginRepository);
@@ -42,5 +43,6 @@ class LoginController extends GetxController {
 
     final response = await _loginRepository.login(loginForm);
     log(response.toString());
+    Get.offNamed(UserView.route);
   }
 }
