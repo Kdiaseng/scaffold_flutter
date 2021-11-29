@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/features/login/controller/login_controller.dart';
+import 'package:scaffold_flutter/utils/api_response.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Login'),
+        title: const Text('Login'),
         actions: [
           IconButton(
             onPressed: loginController.resetInputs,
@@ -46,11 +47,23 @@ class LoginView extends StatelessWidget {
               ),
               const SizedBox(height: 32),
               SizedBox(
-                height: 40,
+                height: 45,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: loginController.login,
-                  child: const Text("Login"),
+                  child: Obx(
+                    () {
+                      final response = loginController.apiResponseLogin;
+                      if (response is Loading) {
+                        return const CircularProgressIndicator(
+                            color: Colors.white);
+                      }
+                      if (response is Error) {
+                        return const Text("Login");
+                      }
+                      return const Text("Login");
+                    },
+                  ),
                 ),
               ),
             ],

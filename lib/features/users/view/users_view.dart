@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:scaffold_flutter/data/models/response/response_custom.dart';
+import 'package:scaffold_flutter/utils/api_response.dart';
 import 'package:scaffold_flutter/features/users/controller/user_controller.dart';
 import 'components/grid_user_component.dart';
 import 'components/list_user_component.dart';

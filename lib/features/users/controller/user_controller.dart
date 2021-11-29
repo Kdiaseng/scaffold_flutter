@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/data/mapper/user_response_mapper.dart';
 import 'package:scaffold_flutter/data/models/response/exception_response.dart';
-import 'package:scaffold_flutter/data/models/response/response_custom.dart';
+import 'package:scaffold_flutter/utils/api_response.dart';
 import 'package:scaffold_flutter/data/repository/user_repository_interface.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
 
@@ -14,13 +14,13 @@ class UserController extends GetxController {
 
   bool get lisModeView => _listModeView.value;
 
-  final _usersResponse = ResponseCustom.start().obs;
+  final _usersResponse = ApiResponse.start().obs;
 
-  ResponseCustom get usersResponse => _usersResponse.value;
+  ApiResponse get usersResponse => _usersResponse.value;
 
-  final _userDetails = ResponseCustom.start().obs;
+  final _userDetails = ApiResponse.start().obs;
 
-  ResponseCustom get userDetails => _userDetails.value;
+  ApiResponse get userDetails => _userDetails.value;
 
   changeModeView(bool isListMode) {
     _listModeView.value = isListMode;
@@ -32,24 +32,24 @@ class UserController extends GetxController {
       Get.toNamed(UserDetailsView.route, arguments: userId);
 
   fetchUsers() async {
-    _usersResponse(ResponseCustom.loading());
+    _usersResponse(ApiResponse.loading());
     try {
       final response = await userRepository.getAllUsers(2);
       _usersResponse(
-          ResponseCustom.success(response.userResponse.asCategoryModelList()));
+          ApiResponse.success(response.userResponse.asCategoryModelList()));
     } on ExceptionResponse catch (e) {
-      _usersResponse(ResponseCustom.error(e.statusCode, e.message));
+      _usersResponse(ApiResponse.error(e.statusCode, e.message));
       Get.snackbar("${e.statusCode}", e.message);
     }
   }
 
   getUserById(int userId) async {
-    _userDetails(ResponseCustom.loading());
+    _userDetails(ApiResponse.loading());
     try {
       final response = await userRepository.getUserById(userId);
-      _userDetails(ResponseCustom.success(response.asUserDetailsModel()));
+      _userDetails(ApiResponse.success(response.asUserDetailsModel()));
     } on ExceptionResponse catch (e) {
-      _userDetails(ResponseCustom.error(e.statusCode, e.message));
+      _userDetails(ApiResponse.error(e.statusCode, e.message));
     }
   }
 }

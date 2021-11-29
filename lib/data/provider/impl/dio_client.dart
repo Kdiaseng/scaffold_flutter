@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:scaffold_flutter/data/models/response/exception_response.dart';
 import 'package:scaffold_flutter/data/provider/http_client_interface.dart';
@@ -33,7 +31,17 @@ class DioClient implements IRestClient {
       {Map<String, dynamic>? queries}) async {
     try {
       final response = await dio.get(url, queryParameters: queries);
-      log('REQUEST DIO');
+      if (response.statusCode == 404) {
+        throw ExceptionResponse(
+            statusCode: 404,
+            message: response.statusMessage ?? "Não encontrado");
+      }
+
+      if (response.statusCode == 400) {
+        throw ExceptionResponse(
+            statusCode: 400, message: response.statusMessage ?? "Bad request");
+      }
+
       return response.data;
     } on DioError catch (e) {
       switch (e.type) {
@@ -61,7 +69,22 @@ class DioClient implements IRestClient {
   @override
   Future<Map<String, dynamic>> post(
       String url, Map<String, dynamic> data) async {
-    final response = await dio.post(url, data: data);
-    return response.data;
+    try {
+      final response = await dio.post(url, data: data);
+      if (response.statusCode == 404) {
+        throw ExceptionResponse(
+            statusCode: 404,
+            message: response.statusMessage ?? "Não encontrado");
+      }
+
+      if (response.statusCode == 400) {
+        throw ExceptionResponse(
+            statusCode: 400, message: response.statusMessage ?? "Bad request");
+      }
+      return response.data;
+    } on DioError catch (e) {
+      throw ExceptionResponse(
+          statusCode: e.response?.statusCode ?? 0, message: e.message);
+    }
   }
 }

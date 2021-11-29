@@ -9,5 +9,5 @@ class PathAssets {
 //images
   static const error = 'assets/images/image_error.svg';
   static const foods = 'assets/images/foods.png';
-  static const clean = 'assets/imag';
+  static const errorLottie = 'assets/images/error_lottie.json';
 }
