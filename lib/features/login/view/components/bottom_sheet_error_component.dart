@@ -18,7 +18,7 @@ class BottomSheetErrorComponent extends StatelessWidget {
       child: Column(
         children: [
           Expanded(child: Lottie.asset(PathAssets.errorLottie)),
-          Text("Desculpe!",
+          Text("sorry".tr,
               style: textTheme.headline5?.copyWith(color: Colors.deepPurple)),
           const SizedBox(height: 16),
           Text(

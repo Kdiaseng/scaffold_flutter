@@ -18,7 +18,17 @@ class UserDetailsView extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Obx(() {
+          final response = userController.userDetails;
+          if (response is Success) {
+            UserDetailsModel user = response.data;
+            return Text('profile_name'.trParams({'name': user.name}));
+          }
+          return Container();
+        }),
+        centerTitle: true,
+      ),
       body: Obx(() {
         final response = userController.userDetails;
         if (response is Success) {
@@ -64,7 +74,7 @@ class UserDetailsView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "Description",
+            "description".tr,
             style: textTheme.headline6?.copyWith(color: Colors.deepPurple),
           ),
         ),
@@ -88,12 +98,10 @@ class UserDetailsView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          CircularProgressIndicator(),
-          SizedBox(
-            height: 8,
-          ),
-          Text("Carregando dados...")
+        children: [
+          const CircularProgressIndicator(),
+          const SizedBox(height: 8),
+          Text("loading_data".tr)
         ],
       ),
     );

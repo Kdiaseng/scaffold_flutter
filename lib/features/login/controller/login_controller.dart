@@ -22,6 +22,8 @@ class LoginController extends GetxController {
 
   final _apiResponseLogin = ApiResponse.start().obs;
 
+  var isPortuguese = false;
+
   ApiResponse get apiResponseLogin => _apiResponseLogin.value;
 
   @override
@@ -31,11 +33,23 @@ class LoginController extends GetxController {
         Get.bottomSheet(BottomSheetErrorComponent(message: response.message));
       }
     });
+    super.onInit();
   }
 
   updateEmail(String value) {
     log(value);
     _email(value);
+  }
+
+  updateLocale() {
+    isPortuguese = !isPortuguese;
+    final Locale locale;
+    if (isPortuguese) {
+      locale = const Locale('pt', 'BR');
+    } else {
+      locale = const Locale('en', 'US');
+    }
+    Get.updateLocale(locale);
   }
 
   resetInputs() {
@@ -53,7 +67,6 @@ class LoginController extends GetxController {
 
   login() async {
     _apiResponseLogin(ApiResponse.loading());
-    log('loading');
     final loginForm =
         CredentialForm(email: _email.value, password: _password.value);
     try {
@@ -61,9 +74,7 @@ class LoginController extends GetxController {
       log(response.toString());
       Get.offNamed(UserView.route);
       _apiResponseLogin(ApiResponse.success(null));
-      log('success');
     } on ExceptionResponse catch (e) {
-      log('error');
       _apiResponseLogin(ApiResponse.error(e.statusCode, e.message));
     }
   }

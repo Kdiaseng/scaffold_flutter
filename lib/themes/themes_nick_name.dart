@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:scaffold_flutter/themes/colors_nick_name.dart';
 
 class ThemesNickName {
   ThemesNickName._();

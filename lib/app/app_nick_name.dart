@@ -6,6 +6,7 @@ import 'package:scaffold_flutter/features/users/user_binding.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
 import 'package:scaffold_flutter/features/users/view/users_view.dart';
 import 'package:scaffold_flutter/themes/themes_nick_name.dart';
+import 'package:scaffold_flutter/utils/nick_name_translations.dart';
 
 class AppNickName extends StatelessWidget {
   const AppNickName({Key? key}) : super(key: key);
@@ -17,6 +18,8 @@ class AppNickName extends StatelessWidget {
       defaultTransition: Transition.fadeIn,
       title: 'Flutter Demo',
       initialRoute: LoginView.route,
+      translations: NickNameTranslations(),
+      locale: const Locale('pt', 'BR'),
       // initialBinding: UserBinding(),
       getPages: [
         GetPage(

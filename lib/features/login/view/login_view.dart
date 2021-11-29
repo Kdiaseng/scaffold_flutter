@@ -15,8 +15,12 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Login'),
+        title: Text('welcome'.tr),
         actions: [
+          IconButton(
+            onPressed: loginController.updateLocale,
+            icon: const Icon(Icons.g_translate),
+          ),
           IconButton(
             onPressed: loginController.resetInputs,
             icon: const Icon(Icons.restart_alt),
@@ -33,8 +37,8 @@ class LoginView extends StatelessWidget {
                 controller: loginController.emailController,
                 onChanged: loginController.updateEmail,
                 keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    labelText: "E-mail", border: OutlineInputBorder()),
+                decoration:  InputDecoration(
+                    labelText: "email".tr, border: const OutlineInputBorder()),
               ),
               const SizedBox(height: 32),
               TextFormField(
@@ -42,8 +46,8 @@ class LoginView extends StatelessWidget {
                 onChanged: loginController.updatePassword,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-                decoration: const InputDecoration(
-                    labelText: "Senha", border: OutlineInputBorder()),
+                decoration:  InputDecoration(
+                    labelText: "password".tr, border: const OutlineInputBorder()),
               ),
               const SizedBox(height: 32),
               SizedBox(
@@ -59,9 +63,9 @@ class LoginView extends StatelessWidget {
                             color: Colors.white);
                       }
                       if (response is Error) {
-                        return const Text("Login");
+                        return  Text("enter".tr);
                       }
-                      return const Text("Login");
+                      return  Text("enter".tr);
                     },
                   ),
                 ),
