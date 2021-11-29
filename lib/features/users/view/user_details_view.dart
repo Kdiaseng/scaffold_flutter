@@ -7,7 +7,7 @@ import 'package:scaffold_flutter/features/users/model/user_details_model.dart';
 import 'package:scaffold_flutter/features/users/view/components/show_message_error_component.dart';
 
 class UserDetailsView extends StatelessWidget {
-  static const route = "/details";
+
 
   const UserDetailsView({Key? key}) : super(key: key);
 

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:scaffold_flutter/app/routes.dart';
 import 'package:scaffold_flutter/data/mapper/user_response_mapper.dart';
 import 'package:scaffold_flutter/data/models/response/exception_response.dart';
 import 'package:scaffold_flutter/utils/api_response.dart';
@@ -28,8 +29,7 @@ class UserController extends GetxController {
 
   getParams() => Get.arguments;
 
-  goToUserDetails(int userId) =>
-      Get.toNamed(UserDetailsView.route, arguments: userId);
+  goToUserDetails(int userId) => Get.toNamed(Routes.details, arguments: userId);
 
   fetchUsers() async {
     _usersResponse(ApiResponse.loading());

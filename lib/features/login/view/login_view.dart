@@ -7,8 +7,6 @@ import 'package:scaffold_flutter/utils/environment.dart';
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
-  static const String route = "/";
-
   @override
   Widget build(BuildContext context) {
     final loginController = Get.find<LoginController>();

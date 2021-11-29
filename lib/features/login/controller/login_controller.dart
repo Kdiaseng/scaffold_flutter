@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scaffold_flutter/app/routes.dart';
 import 'package:scaffold_flutter/data/models/forms/credential_form.dart';
 import 'package:scaffold_flutter/data/models/response/exception_response.dart';
 import 'package:scaffold_flutter/data/repository/login_repository_interface.dart';
@@ -72,7 +73,7 @@ class LoginController extends GetxController {
     try {
       final response = await _loginRepository.login(loginForm);
       log(response.toString());
-      Get.offNamed(UserView.route);
+      Get.offNamed(Routes.home);
       _apiResponseLogin(ApiResponse.success(null));
     } on ExceptionResponse catch (e) {
       _apiResponseLogin(ApiResponse.error(e.statusCode, e.message));

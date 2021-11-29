@@ -7,7 +7,6 @@ import 'components/list_user_component.dart';
 import 'components/show_message_error_component.dart';
 
 class UserView extends StatelessWidget {
-  static const route = "/user";
 
   const UserView({Key? key}) : super(key: key);
 

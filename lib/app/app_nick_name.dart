@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:scaffold_flutter/app/routes.dart';
 import 'package:scaffold_flutter/features/login/view/login_binding.dart';
 import 'package:scaffold_flutter/features/login/view/login_view.dart';
 import 'package:scaffold_flutter/features/users/user_binding.dart';
@@ -16,26 +17,32 @@ class AppNickName extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fadeIn,
+      unknownRoute: GetPage(
+          name: Routes.unknown,
+          page: () => const Center(
+                child: Text('DESCONHECIDO!'),
+              )),
       title: 'Flutter Demo',
-      initialRoute: LoginView.route,
+      initialRoute: Routes.login,
       translations: NickNameTranslations(),
       locale: const Locale('pt', 'BR'),
       // initialBinding: UserBinding(),
       getPages: [
         GetPage(
-            name: LoginView.route,
+            name: Routes.login,
             page: () => const LoginView(),
             binding: LoginBiding()),
         GetPage(
-            name: UserView.route,
+            name: Routes.home,
             page: () => const UserView(),
             binding: UserBinding()),
         GetPage(
-          name: UserDetailsView.route,
+          name: Routes.details,
           page: () => const UserDetailsView(),
         ),
       ],
       theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: ThemesNickName.textTheme,
         inputDecorationTheme: ThemesNickName.inputDecorationTheme,
         primarySwatch: Colors.deepPurple,

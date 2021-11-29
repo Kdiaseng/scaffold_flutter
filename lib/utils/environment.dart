@@ -10,5 +10,9 @@ class Environment {
   static String get env => _get('ENV');
   static String get baseUrl => _get('API_URL');
 
+  /*Meio pra mandar variaveisl em tempo de execução
+  flutter run --release --dart-define url_base='http://api_url'*/
+  // static String get urlBase => const String.fromEnvironment("url_base");
+
   static String _get(String name) => dotenv.env[name] ?? "";
 }
