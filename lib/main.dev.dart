@@ -5,6 +5,6 @@ import 'package:scaffold_flutter/utils/environment.dart';
 import 'app/app_nick_name.dart';
 
 Future<void> main() async {
-  await dotenv.load(fileName: Environment.fileNameProd);
+  await dotenv.load(fileName: Environment.fileNameDev);
   runApp(const AppNickName());
 }

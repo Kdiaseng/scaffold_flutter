@@ -12,7 +12,7 @@ class NickNameTranslations extends Translations {
           'description': 'Descrição',
           'loading_data': 'Carregando dados...',
           'sorry': 'Desculpe!',
-          'welcome': 'Bem Vindo!',
+          'welcome': 'Bem Vindo! @env',
           'profile_name': 'Perfil de @name'
         },
         'en_US': {

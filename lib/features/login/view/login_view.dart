@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:scaffold_flutter/features/login/controller/login_controller.dart';
 import 'package:scaffold_flutter/utils/api_response.dart';
+import 'package:scaffold_flutter/utils/environment.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('welcome'.tr),
+        title: Text('welcome'.trParams({'env': Environment.env})),
         actions: [
           IconButton(
             onPressed: loginController.updateLocale,
@@ -37,7 +38,7 @@ class LoginView extends StatelessWidget {
                 controller: loginController.emailController,
                 onChanged: loginController.updateEmail,
                 keyboardType: TextInputType.emailAddress,
-                decoration:  InputDecoration(
+                decoration: InputDecoration(
                     labelText: "email".tr, border: const OutlineInputBorder()),
               ),
               const SizedBox(height: 32),
@@ -46,8 +47,9 @@ class LoginView extends StatelessWidget {
                 onChanged: loginController.updatePassword,
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
-                decoration:  InputDecoration(
-                    labelText: "password".tr, border: const OutlineInputBorder()),
+                decoration: InputDecoration(
+                    labelText: "password".tr,
+                    border: const OutlineInputBorder()),
               ),
               const SizedBox(height: 32),
               SizedBox(
@@ -63,9 +65,9 @@ class LoginView extends StatelessWidget {
                             color: Colors.white);
                       }
                       if (response is Error) {
-                        return  Text("enter".tr);
+                        return Text("enter".tr);
                       }
-                      return  Text("enter".tr);
+                      return Text("enter".tr);
                     },
                   ),
                 ),
