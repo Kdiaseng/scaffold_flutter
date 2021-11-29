@@ -12,15 +12,20 @@ class BottomSheetErrorComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Container(
       child: Column(
         children: [
           Expanded(child: Lottie.asset(PathAssets.errorLottie)),
-          const SizedBox(height: 8),
-          const Text("Desculpe"),
-          const SizedBox(height: 8),
-          Text(message),
-          TextButton(onPressed: Get.back, child: const Text("Ok"))
+          Text("Desculpe!",
+              style: textTheme.headline5?.copyWith(color: Colors.deepPurple)),
+          const SizedBox(height: 16),
+          Text(
+            message,
+            style: textTheme.subtitle2,
+          ),
+          TextButton(onPressed: Get.back, child: const Text("OK"))
         ],
       ),
       decoration: const BoxDecoration(

@@ -15,6 +15,7 @@ class UserDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final userController = Get.find<UserController>();
     userController.getUserById(userController.getParams());
+    final textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
       appBar: AppBar(),
@@ -22,7 +23,7 @@ class UserDetailsView extends StatelessWidget {
         final response = userController.userDetails;
         if (response is Success) {
           UserDetailsModel user = response.data;
-          return buildContentDetails(userController, user);
+          return buildContentDetails(userController, user, textTheme);
         }
 
         if (response is Loading) {
@@ -41,8 +42,8 @@ class UserDetailsView extends StatelessWidget {
     );
   }
 
-  Column buildContentDetails(
-      UserController userController, UserDetailsModel user) {
+  Column buildContentDetails(UserController userController,
+      UserDetailsModel user, TextTheme textTheme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -60,15 +61,22 @@ class UserDetailsView extends StatelessWidget {
           subtitle: Text(user.email),
         ),
         const SizedBox(height: 16),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          child: Text("Description"),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            "Description",
+            style: textTheme.headline6?.copyWith(color: Colors.deepPurple),
+          ),
         ),
         const SizedBox(height: 8),
         Expanded(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Text(user.description),
+            child: Text(
+              user.description,
+              style: textTheme.caption
+                  ?.copyWith(fontSize: 24, fontWeight: FontWeight.normal),
+            ),
           ),
         )
       ],
