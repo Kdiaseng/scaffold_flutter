@@ -5,6 +5,7 @@ import 'package:scaffold_flutter/features/login/view/login_view.dart';
 import 'package:scaffold_flutter/features/users/user_binding.dart';
 import 'package:scaffold_flutter/features/users/view/user_details_view.dart';
 import 'package:scaffold_flutter/features/users/view/users_view.dart';
+import 'package:scaffold_flutter/themes/themes_nick_name.dart';
 
 class AppNickName extends StatelessWidget {
   const AppNickName({Key? key}) : super(key: key);
@@ -32,7 +33,9 @@ class AppNickName extends StatelessWidget {
         ),
       ],
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        textTheme: ThemesNickName.textTheme,
+        inputDecorationTheme: ThemesNickName.inputDecorationTheme,
+        primarySwatch: Colors.deepPurple,
       ),
     );
   }
