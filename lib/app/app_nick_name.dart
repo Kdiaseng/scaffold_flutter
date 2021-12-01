@@ -18,10 +18,11 @@ class AppNickName extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fadeIn,
       unknownRoute: GetPage(
-          name: Routes.unknown,
-          page: () => const Center(
-                child: Text('DESCONHECIDO!'),
-              )),
+        name: Routes.unknown,
+        page: () => const Center(
+          child: Text('DESCONHECIDO!'),
+        ),
+      ),
       title: 'Flutter Demo',
       initialRoute: Routes.login,
       translations: NickNameTranslations(),

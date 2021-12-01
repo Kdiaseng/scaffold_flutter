@@ -1,30 +1,30 @@
 import 'package:get/get.dart';
 
+import 'keys_translate.dart';
+
 class NickNameTranslations extends Translations {
   @override
   // TODO: implement keys
   Map<String, Map<String, String>> get keys => {
         'pt_BR': {
-          'title': 'Alô Mundo!',
-          'email': 'E-mail',
-          'password': 'Senha',
-          'enter': 'Entrar',
-          'description': 'Descrição',
-          'loading_data': 'Carregando dados...',
-          'sorry': 'Desculpe!',
-          'welcome': 'Bem Vindo! @env',
-          'profile_name': 'Perfil de @name'
+          KeysTranslate.email: 'E-mail',
+          KeysTranslate.password: 'Senha',
+          KeysTranslate.enter: 'Entrar',
+          KeysTranslate.description: 'Descrição',
+          KeysTranslate.loadingData: 'Carregando dados...',
+          KeysTranslate.sorry: 'Desculpe!',
+          KeysTranslate.welcome: 'Bem Vindo! @env',
+          KeysTranslate.profileName: 'Perfil de @name'
         },
         'en_US': {
-          'title': 'Hello Wold',
-          'email': 'E-mail',
-          'password': 'Password',
-          'enter': 'Enter',
-          'description': 'Description',
-          'loading_data': 'Loading data...',
-          'sorry': 'Sorry!',
-          'welcome': 'Welcome',
-          'profile_name': 'Profile of @name'
+          KeysTranslate.email: 'E-mail',
+          KeysTranslate.password: 'Password',
+          KeysTranslate.enter: 'Enter',
+          KeysTranslate.description: 'Description',
+          KeysTranslate.loadingData: 'Loading data...',
+          KeysTranslate.sorry: 'Sorry!',
+          KeysTranslate.welcome: 'Welcome',
+          KeysTranslate.profileName: 'Profile of @name'
         },
       };
 }

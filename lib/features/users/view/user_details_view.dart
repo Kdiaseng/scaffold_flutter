@@ -5,10 +5,9 @@ import 'package:scaffold_flutter/utils/api_response.dart';
 import 'package:scaffold_flutter/features/users/controller/user_controller.dart';
 import 'package:scaffold_flutter/features/users/model/user_details_model.dart';
 import 'package:scaffold_flutter/features/users/view/components/show_message_error_component.dart';
+import 'package:scaffold_flutter/utils/keys_translate.dart';
 
 class UserDetailsView extends StatelessWidget {
-
-
   const UserDetailsView({Key? key}) : super(key: key);
 
   @override
@@ -23,7 +22,8 @@ class UserDetailsView extends StatelessWidget {
           final response = userController.userDetails;
           if (response is Success) {
             UserDetailsModel user = response.data;
-            return Text('profile_name'.trParams({'name': user.name}));
+            return Text(
+                KeysTranslate.profileName.trParams({'name': user.name}));
           }
           return Container();
         }),
@@ -74,7 +74,7 @@ class UserDetailsView extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            "description".tr,
+            KeysTranslate.description.tr,
             style: textTheme.headline6?.copyWith(color: Colors.deepPurple),
           ),
         ),
@@ -101,7 +101,7 @@ class UserDetailsView extends StatelessWidget {
         children: [
           const CircularProgressIndicator(),
           const SizedBox(height: 8),
-          Text("loading_data".tr)
+          Text(KeysTranslate.loadingData.tr)
         ],
       ),
     );
